@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH -p general
+#SBATCH -n 24
+#SBATCH -N 1
+#SBATCH --mem 30000
+#SBATCH -t 1-0
+#SBATCH -J test_align1
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=nate_diehl@med.unc.edu
+#SBATCH -o test_align1.out
+#SBATCH -e test_align1.err
+
+bbmap.sh threads=24 -Xmx30g in=/proj/derlab/projects/RNAseq/rawData/Panc_ERK_RAW/trimmed/TPC_0001_R1_4_trimmed.fastq.gz in2=/proj/derlab/projects/RNAseq/rawData/Panc_ERK_RAW/trimmed/TPC_0001_R2_4_trimmed.fastq.gz path=/proj/seq/data/hg38_UCSC/Sequence/BBMapIndex/ out=/proj/derlab/projects/RNAseq/rawData/Panc_ERK_RAW/aligned/TPC_0001_4_aligned.bam maxindel=10000 intronlen=10 ambig=random qin=33 sam=1.4
